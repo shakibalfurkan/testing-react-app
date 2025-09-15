@@ -10,7 +10,12 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
-    setupFiles: ["./src/setupTest.ts"],
-    include: ["**/__tests__/**/*.{ts,tsx}", "**/*.{spec, test}.{ts,tsx}"],
+    setupFiles: "./src/setupTest.ts", // Optional: setup file
+    include: [
+      // Comprehensive test file pattern
+      "**/*.{test,spec}.{ts,tsx}", // Matches test files anywhere
+      "**/__tests__/**/*.{ts,tsx}", // Still includes __tests__ folder
+    ],
+    exclude: ["**/node_modules/**", "**/dist/**", "**/cypress/**", "**/e2e/**"],
   },
 });
