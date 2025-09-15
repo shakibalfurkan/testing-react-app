@@ -1,10 +1,13 @@
 import "./App.css";
+import PrimaryButton from "./components/PrimaryButton";
 
 function App() {
   return (
-    <>
-      <h1>Welcome to react testing</h1>
-    </>
+    <div>
+      <h1>Hello World</h1>
+      <PrimaryButton />
+      <PrimaryButton actionType="Delete" />
+    </div>
   );
 }
 
