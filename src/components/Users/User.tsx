@@ -11,6 +11,7 @@ export default function Users() {
   const [users, setUsers] = useState<UserType>([]);
   const [error, setError] = useState<{ name?: string; email?: string }>({});
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [editMode, setEditMode] = useState(false);
 
   const validateForm = (name: string, email: string) => {
     const newErrors: { name?: string; email?: string } = {};
@@ -124,8 +125,14 @@ export default function Users() {
           I accept the terms and conditions
         </label>
         <button type="submit" disabled={!termsAccepted}>
-          Submit
+          Add
         </button>
+
+        {editMode ? (
+          <button type="submit">Submit</button>
+        ) : (
+          <button type="submit">Edit</button>
+        )}
       </form>
       <div>
         {/* Optional: Display users */}

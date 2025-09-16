@@ -22,6 +22,12 @@ it("should render the component", () => {
   //   const element2 = screen.getByDisplayValue("Shakib");
   const element2 = screen.getByTestId("paragraph");
 
+  const button = screen.queryByRole("button", {
+    name: "Submit",
+  });
+
+  expect(button).not.toBeInTheDocument();
+
   expect(element2).toBeInTheDocument();
   expect(element).toBeInTheDocument();
   expect(headingElement).toBeInTheDocument();
