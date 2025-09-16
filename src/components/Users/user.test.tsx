@@ -11,6 +11,9 @@ it("should render the component", () => {
     level: 2,
   });
 
+  const element2 = screen.getByTestId("paragraph");
+
+  expect(element2).toBeInTheDocument();
   expect(element).toBeInTheDocument();
   expect(headingElement).toBeInTheDocument();
 });

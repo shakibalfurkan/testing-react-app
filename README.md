@@ -1,70 +1,79 @@
-# React + TypeScript + Vite
+# React Testing Setup: Vitest + TypeScript + React Testing Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 1. Create a New React + TypeScript Project with Vite
 
-Currently, two official plugins are available:
+## 2. Install all dependencies for testing
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+pnpm i -D vitest jsdom @testing-library/react @testing-library/jest-dom @testing-library/user-event
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 3. Update Vite Configuration
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Update `vite.config.ts`:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
+```typescript
+/// <reference types="vitest"/>
+/// <reference types="vite/client" />
+
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./src/setupTest.ts", // Optional: setup file
+    include: [
+      // Comprehensive test file pattern
+      "**/*.{test,spec}.{ts,tsx}", // Matches test files anywhere
+      "**/__tests__/**/*.{ts,tsx}", // Still includes __tests__ folder
     ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
   },
-])
+});
 ```
-# testing-react-app
+
+## 4. Create Test Setup File
+
+- Create `/src/setupTest.ts`:
+
+```typescript
+import "@testing-library/jest-dom";
+```
+
+## 5. Update `tsconfig.app.json` file
+
+- Update the code with this line of code
+
+```json
+{
+  "compilerOptions": {
+    "types": ["vitest/globals"]
+    // ...rest of your config
+  }
+}
+```
+
+## 6. Update Package.json Scripts
+
+```json
+"scripts": {
+    "test": "vitest --reporter verbose",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage"
+  }
+```
+
+### Example Test File Structure
+
+```code
+src/
+├── components/
+│   ├── Button.tsx
+│   └── Button.test.tsx
+└── setupTest.ts
+
+```

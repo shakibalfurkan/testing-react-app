@@ -72,16 +72,46 @@ export default function Users() {
     <section className="container">
       <h1>Testing react </h1>
       <h2>Testing react in h2</h2>
+      <p>Enter the form data</p>
+
+      <div data-testId="paragraph">
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum sunt
+          asperiores ullam nemo amet ducimus adipisci tenetur. Voluptas, dolores
+          illo doloremque maiores alias suscipit ipsam quod laborum mollitia
+          commodi modi.
+        </p>
+      </div>
+
+      <img
+        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fjooinn.com%2Fimages%2Fgreen-nature-23.jpg&f=1&nofb=1&ipt=31bbbfd046bb884ffb891aea980df1447b8435837fe260897eae57d7e488f878"
+        alt="nature"
+      />
+
+      <div title="open">open</div>
 
       <form onSubmit={handleSubmit}>
         <div className="input-wrapper">
           <label htmlFor="name">Name</label>
-          <input id="name" type="text" name="name" required />
+          <input
+            id="name"
+            value={"Shakib"}
+            type="text"
+            name="name"
+            placeholder="User name"
+            required
+          />
           {error.name && <span className="error">{error.name}</span>}
         </div>
         <div className="input-wrapper">
-          <label htmlFor="email">Email:</label>
-          <input type="email" name="email" id="email" required />
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="User email"
+            required
+          />
           {error.email && <span className="error">{error.email}</span>}
         </div>
         <label className="terms-label">
