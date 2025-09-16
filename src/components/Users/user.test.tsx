@@ -11,6 +11,15 @@ it("should render the component", () => {
     level: 2,
   });
 
+  //   const element2 = screen.getByPlaceholderText("User name");
+  //   const element2 = screen.getByPlaceholderText("User name");
+  //   const element2 = screen.getByText("Enter the form data");
+  //   const element2 = screen.getByLabelText("Email", {
+  //     selector: "input",
+  //   });
+  //   const element2 = screen.getByAltText("nature");
+  //   const element2 = screen.getByTitle("open");
+  //   const element2 = screen.getByDisplayValue("Shakib");
   const element2 = screen.getByTestId("paragraph");
 
   expect(element2).toBeInTheDocument();
