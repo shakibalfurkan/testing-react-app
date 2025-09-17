@@ -1,4 +1,5 @@
 import "./App.css";
+import FormComponent from "./components/Form/Form";
 import FruitList from "./components/FruitList/FruitList";
 import PrimaryButton from "./components/PrimaryButton";
 import UserEvent from "./components/UserEvent/UserEvent";
@@ -22,7 +23,12 @@ function App() {
       {/* <Users />
       <FruitList fruits={fruits} /> */}
       {/* <UserTable users={users} /> */}
-      <UserEvent />
+      {/* <UserEvent /> */}
+      <FormComponent
+        onSubmit={(data) => {
+          console.log(data);
+        }}
+      />
     </div>
   );
 }
