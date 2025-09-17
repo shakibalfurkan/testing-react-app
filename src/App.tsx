@@ -1,6 +1,7 @@
 import "./App.css";
 import FruitList from "./components/FruitList/FruitList";
 import PrimaryButton from "./components/PrimaryButton";
+import UserEvent from "./components/UserEvent/UserEvent";
 import Users from "./components/Users/User";
 import UserTable from "./components/UserTable/UserTable";
 
@@ -20,7 +21,8 @@ function App() {
       <PrimaryButton actionType="Delete" /> */}
       {/* <Users />
       <FruitList fruits={fruits} /> */}
-      <UserTable users={users} />
+      {/* <UserTable users={users} /> */}
+      <UserEvent />
     </div>
   );
 }
