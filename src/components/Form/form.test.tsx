@@ -5,13 +5,10 @@ import FormComponent from "./Form";
 describe("FormComponent()", () => {
   test("submit the form correctly with user input", async () => {
     user.setup();
-    render(
-      <FormComponent
-        onSubmit={(data) => {
-          console.log(data);
-        }}
-      />
-    );
+
+    const submitFn = vi.fn();
+
+    render(<FormComponent onSubmit={submitFn} />);
 
     const text = "Hello world";
 
@@ -22,6 +19,15 @@ describe("FormComponent()", () => {
       level: 2,
     });
 
+    const submitBtn = screen.getByRole("button", {
+      name: "Submit",
+    });
+
+    await user.click(submitBtn);
+
     expect(headingEl).toHaveTextContent(text);
+
+    //   test if the submitFn was called
+    expect(submitFn).toHaveBeenCalledWith(text);
   });
 });
