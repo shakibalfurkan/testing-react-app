@@ -1,4 +1,5 @@
 import "./App.css";
+import { Counter } from "./components/Counter/Counter";
 import FormComponent from "./components/Form/Form";
 import FruitList from "./components/FruitList/FruitList";
 import PrimaryButton from "./components/PrimaryButton";
@@ -29,6 +30,8 @@ function App() {
           console.log(data);
         }}
       />
+
+      <Counter />
     </div>
   );
 }
