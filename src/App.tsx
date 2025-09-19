@@ -25,11 +25,11 @@ function App() {
       <FruitList fruits={fruits} /> */}
       {/* <UserTable users={users} /> */}
       {/* <UserEvent /> */}
-      <FormComponent
+      {/* <FormComponent
         onSubmit={(data) => {
           console.log(data);
         }}
-      />
+      /> */}
 
       <Counter />
     </div>
